@@ -27,7 +27,7 @@ public class Graphics extends Canvas implements Runnable {
     private Thread thread;
     private boolean running = false;
     private int fps = 60;
-    private int ups = 30;
+    private int ups = 60;
 
     private Sprite s;
     private Sprite square1;
@@ -80,16 +80,13 @@ public class Graphics extends Canvas implements Runnable {
     }
 
     private void update() {
-        for (int i = 0 ; i < pixels.length ; i++) {
-            pixels[i] = 0;
-        }
         // The mario sprite
 
         /* Parametric curve (a circle) see https://en.wikipedia.org/wiki/Parametric_equation
            t controls the coordinates as (x(t),y(t)). Here t is increased by 2 degrees (pi/180 rad)
            each timestep.
         */
-        t += Math.PI/180;
+        t += Math.PI/200;
 
         int x = (int)(width/2+(width/2-s.getWidth())*Math.sin(t));
         int y = (int)(height/2+(height/2-s.getHeight())*Math.cos(t));
